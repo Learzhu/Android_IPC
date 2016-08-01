@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.learzhu.android_ipc">
+
+    <application
+        android:name="com.learzhu.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="standard">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--在之前加上包名  私有进程-->
+        <activity
+            android:name=".SecondActivity"
+            android:configChanges="screenLayout"
+            android:label="@string/app_name"
+            android:process=":remote" />
+        <!--全局进程  其他应用可以通过ShareUID方式和他同一个进程 前提是相同的ShareUID和签名-->
+        <activity
+            android:name=".ThirdActivity"
+            android:configChanges="screenLayout"
+            android:label="@string/app_name"
+            android:process="com.learzhu.android_ipc.remote"></activity>
+    </application>
+
+</manifest>
